@@ -22,6 +22,9 @@ build:
 	GOOS=js GOARCH=wasm $(GO_BUILD) -mod=vendor ${LDFLAGS} -o $(BIN_DIR)/$(PROJECT_NAME).wasm .
 	@echo "$(CUR_TIME) [INFO ] Build $(PROJECT_NAME) completed"
 
+run:
+	node wasm_exec.js bin/silver-web-assembly.wasm
+
 clean:
 	$(GO_CLEAN)
 	rm $(BIN_DIR)/$(PROJECT_NAME).wasm
@@ -54,4 +57,4 @@ gometalinter:
 	gometalinter --vendor --fast --enable-gc --tests --aggregate --disable=gotype ./...
 
 # .PHONY
-.PHONY:	default dev build clean fmt ps dev-run stop vendor doc check goimports gometalinter
+.PHONY: default dev build clean fmt ps dev-run stop vendor doc check goimports gometalinter
