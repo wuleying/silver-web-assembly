@@ -3,6 +3,8 @@ PROJECT_NAME=silver-web-assembly
 
 BIN_DIR=$(CURDIR)/bin
 
+CUR_DATE=`date "+%Y%m%d"`
+CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
 # Go parameters
 GO_CMD=go
