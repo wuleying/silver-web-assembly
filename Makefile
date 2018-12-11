@@ -14,7 +14,6 @@ GO_TEST=$(GO_CMD) test
 GO_DOC=$(GO_CMD) doc
 GO_GET=$(GO_CMD) get
 GO_FMT=$(GO_CMD)fmt
-GO_IMPORTS=goimports
 GO_MOD=$(GO_CMD) mod
 
 # Tools
