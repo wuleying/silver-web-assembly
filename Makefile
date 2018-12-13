@@ -1,7 +1,8 @@
 # ENV
 PROJECT_NAME=silver-web-assembly
 
-WASM_DIR=$(CURDIR)/wasm
+BIN_DIR=$(CURDIR)/bin
+STATIC_DIR=$(CURDIR)/statics
 
 CUR_DATE=`date "+%Y%m%d"`
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
@@ -19,12 +20,18 @@ GO_MOD=$(GO_CMD) mod
 # Tools
 default: build
 
+dev: stop build run
+
 build:
-	GOOS=js GOARCH=wasm $(GO_BUILD) -mod=vendor ${LDFLAGS} -o $(WASM_DIR)/$(PROJECT_NAME).wasm .
+	GOOS=js GOARCH=wasm $(GO_BUILD) -mod=vendor -o $(STATIC_DIR)/$(PROJECT_NAME).wasm ./wasm.go
+	$(GO_BUILD) -o $(BIN_DIR)/$(PROJECT_NAME)-server ./server.go
 	@echo "$(CUR_TIME) [INFO ] Build $(PROJECT_NAME) completed"
 
 run:
-	node wasm_exec.js wasm/silver-web-assembly.wasm
+	$(BIN_DIR)/$(PROJECT_NAME)-server &
+
+run-wasm:
+	node $(STATIC_DIR)/wasm_exec.js $(STATIC_DIR)/silver-web-assembly.wasm
 
 clean:
 	$(GO_CLEAN)

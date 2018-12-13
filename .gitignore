@@ -15,4 +15,6 @@
 .DS_Store
 *.iml
 .idea/
-wasm/*
+nohup.out
+bin/silver-web-assembly-server
+statics/silver-web-assembly.wasm
