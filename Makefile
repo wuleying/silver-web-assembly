@@ -65,4 +65,4 @@ gometalinter:
 	gometalinter --vendor --fast --enable-gc --tests --aggregate --disable=gotype ./...
 
 # .PHONY
-.PHONY: default dev build clean fmt ps dev-run stop vendor doc check goimports gometalinter
+.PHONY: default dev build run run-wasm clean fmt ps stop vendor doc check goimports gometalinter
